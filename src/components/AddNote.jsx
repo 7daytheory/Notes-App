@@ -29,7 +29,7 @@ function AddNote(props) {
 
   return (
     <div>
-      <form>
+      <form className="create-note">
         <input name="title" placeholder="Title" value={note.title} onChange={updateValue}/>
         <textarea name="content" placeholder="Take a note..." value={note.content} onChange={updateValue} rows="3" />
         <button onClick={addNote}>Add</button>
