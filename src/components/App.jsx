@@ -14,17 +14,26 @@ function App() {
       });
     }
 
+    function deleteNote(id) {
+      setNotes(prevNotes => {
+        return prevNotes.filter((note, index) => {
+          return index !== id;
+        });
+      });
+    }
+
   return (
     <div>
       <Header />
       <AddNote onAdd={addNote} />
-      {notes.map((noteItem, index) => {
+      {notes.map((note, index) => {
         return (
           <Note
-            key={noteItem.index}
-            id={noteItem.id}
-            title={noteItem.title}
-            content={noteItem.content}
+            id={index}
+            key={index}
+            title={note.title}
+            content={note.content}
+            onDelete={deleteNote}
           />
         );
       })}
