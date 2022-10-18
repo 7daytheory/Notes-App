@@ -5,6 +5,8 @@ import Zoom from '@material-ui/core/Zoom';
 
 function AddNote(props) {
 
+  const [startNote, setStartNote ] = useState(false);
+
   const [note, setNote] = useState({
     title: '',
     content: ''
@@ -21,6 +23,10 @@ function AddNote(props) {
     })
   }
 
+  function clickNote() {
+    setStartNote(true);
+  }
+
   function addNote(event) {
     props.onAdd(note);
     setNote({
@@ -33,9 +39,9 @@ function AddNote(props) {
   return (
     <div>
       <form className="create-note">
-        <input name="title" placeholder="Title" value={note.title} onChange={updateValue}/>
-        <textarea name="content" placeholder="Take a note..." value={note.content} onChange={updateValue} rows="3" />
-        <Zoom in={true}>
+      {startNote && <input name="title" placeholder="Title" value={note.title} onChange={updateValue}/>}
+        <textarea name="content" placeholder="Take a note..." value={note.content} onChange={updateValue} onClick={clickNote} rows={startNote ? 3 : 1} />
+        <Zoom in={startNote}>
         <Fab onClick={addNote}><AddIcon /></Fab>
         </Zoom>
       </form>
