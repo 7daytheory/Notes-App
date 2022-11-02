@@ -5,6 +5,9 @@ import Zoom from '@material-ui/core/Zoom';
 
 function AddNote(props) {
 
+  //Connect to firebase version - tomorrow
+
+  //Set State
   const [startNote, setStartNote ] = useState(false);
 
   const [note, setNote] = useState({
@@ -12,6 +15,8 @@ function AddNote(props) {
     content: ''
   });
 
+
+//Update Value
   function updateValue(event) {
     const {name, value} = event.target;
 
@@ -23,10 +28,12 @@ function AddNote(props) {
     })
   }
 
+//Set Note
   function clickNote() {
     setStartNote(true);
   }
 
+//Create Note
   function addNote(event) {
     props.onAdd(note);
     setNote({
@@ -35,6 +42,9 @@ function AddNote(props) {
     });
     event.preventDefault();
   }
+
+  //Update Note
+// Update note code
 
   return (
     <div>
